@@ -19,11 +19,11 @@ class MainLogin{//CREAMOS NUESTRA CLASE
             Login log = new Login();
 
             //COMPARAMOS LOS DATOS INGRESADOS POR EL USUARIO CON LOS GUARDADOS EN EL METODO CONTRUCTOR "LOGIN"
-            if (usuario.equals("OSCAR") && contraseña.equals("elbicho07SIUUU")){
+            if (usuario.equals("OSCAR") && contraseña.equals("holaquehace")){
                 log.login();
             }else{
                 System.out.println("\n¡USUARIO O CONTRASEÑA INCORRECTOS!");
             }
-        }while(!(usuario.equals("OSCAR") && contraseña.equals("elbicho07SIUUU")));
+        }while(!(usuario.equals("OSCAR") && contraseña.equals("holaquehace")));
     }
 }
