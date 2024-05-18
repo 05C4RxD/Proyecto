@@ -15,4 +15,42 @@ class Login{ //CREAMOS NUESTRA CLASE "LOGIN"
         System.out.println("USTED A ACCEDIDO");
     }
 
+    public String getUSUARIO() {
+        return USUARIO;
+    }
+
+    public void setUSUARIO(String uSUARIO) {
+        USUARIO = uSUARIO;
+    }
+
+    public String getCONTRASEÑA() {
+        return CONTRASEÑA;
+    }
+
+    public void setCONTRASEÑA(String cONTRASEÑA) {
+        CONTRASEÑA = cONTRASEÑA;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    @Override
+    public String toString() {
+        return "Login [USUARIO=" + USUARIO + ", CONTRASEÑA=" + CONTRASEÑA + ", usuario=" + usuario + ", contraseña="
+                + contraseña + "]";
+    }
+
 }
