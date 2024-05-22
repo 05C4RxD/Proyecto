@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;//IMPORTAMOS NUESTRA LIBRERIA "SCANNER"
 class Main{//CREAMOS NUESTRA CLASE
 
@@ -32,13 +34,13 @@ class Main{//CREAMOS NUESTRA CLASE
         a = (usuario.equals(log.getUSUARIO()) && contraseña.equals(log.getCONTRASEÑA()));
         }while(a != true);
 
-        //CREAMOS UN MENÚ PARA DAR MULTIPLES OBCIONES EN NUESTRI PROYECTOD
-        System.out.println("\n-------------MENU-------------");
+        //CREAMOS UN MENÚ PARA DAR MULTIPLES OBCIONES EN NUESTRO PROYECTO
+        System.out.println("\n-------------MENÚ-------------");
         //LO HACEMOS CON OTRO "DO WHILE" PARA QUE SEA REPETITIVO
         do{
             System.out.println("\nINGRESE LO QUE DESEE HACER\n ");
-            System.out.println("1.- CONSULTAR");
-            System.out.println("2.- CREAR");
+            System.out.println("1.- CREAR");
+            System.out.println("2.- LEER");
             System.out.println("3.- ACTUALIZAR");
             System.out.println("4.- ELIMINAR");
             System.out.println("0.- SALIR");
@@ -46,13 +48,39 @@ class Main{//CREAMOS NUESTRA CLASE
         //UTILIZAMOS EL METODO "SWITCH" PARA PODER HACER SEGÚN SEA EL CASO
         switch (b) {
             case 1:
-                System.out.println("CONSULTANDO PRODUCTOS");
+                System.out.println("-------------CREANDO PRODUCTOS-------------");
+                String marca, producto, ab;
+                int id, precio;
+                List<Productos> lista = new ArrayList<Productos>();
+        
+                do{
+                    System.out.print("\nINGRESE EL ID PRODUCTO: ");
+                    id = scan.nextInt(); 
+                    System.out.print("INGRESE EL NOMBRE DEL PRODUCTO: ");
+                    producto = scan.next();
+                    System.out.print("INGRESE LA MARCA: ");
+                    marca = scan.next();
+                    System.out.print("INGRESE UN PRECIO: $");
+                    precio = scan.nextInt();
+                    lista.add(new Productos(id, marca, precio, producto));
+                    System.out.println("\n¿DESEAS AGRETAR OTRO PRODUCTO?\n");
+                    ab = scan.next();
+                    while(!(ab.equals("si") || ab.equals("no"))){
+                        System.out.println("\n¿DESEAS GREGAR OTRO PRODUCTO?\n");
+                        ab = scan.next();
+                    }
+                }while(ab.equals("si"));
+
+                for(Productos pro : lista){
+                    System.out.println("\n");
+                    System.out.println("ID DEL PRODUCTO: " + pro.getId() + ", NOMBRE DEL PRODUCTO: " + pro.getProducto() + ", MARCA: " + pro.getMarca() + ", PRECIO: $" + pro.getPrecio());
+                }
             break;
             case 2:
-                System.out.println("CREANDO PRODUCTO");
+                System.out.println("-----------CONSULTANDO PRODUCTO------------");
             break;
             case 3:
-                System.out.println("ACTUALIZANDO PRODUCTO");
+                System.out.println("-----------ACTUALIZANDO PRODUCTO-----------");
             break;
             case 4:
                 System.out.println("ELIMINANDO PRODUCTO");
