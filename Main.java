@@ -10,7 +10,7 @@ class Main{//CREAMOS NUESTRA CLASE
         //CREAMOS NUESTRAS VARIABLES PARA GUARDAR LOS DATOS INGRESADOS POR EL USUARIO
         String usuario, contraseña;
         int b;
-        boolean a;
+        boolean a, x = false;
 
         //CREAMOS EL CICLO "DO WHILE" POR SI EL USUARIO O CONTRASEÑA SON INCORRECTOS LOS VUELVA A PEDIR
         do{
@@ -34,10 +34,10 @@ class Main{//CREAMOS NUESTRA CLASE
         a = (usuario.equals(log.getUSUARIO()) && contraseña.equals(log.getCONTRASEÑA()));
         }while(a != true);
 
-        do{
-            try{
                 //CREAMOS UN MENÚ PARA DAR MULTIPLES OBCIONES EN NUESTRO PROYECTO
                 System.out.println("\n-------------MENÚ-------------");
+        do{
+            try{
                 //LO HACEMOS CON OTRO "DO WHILE" PARA QUE SEA REPETITIVO
                 do{
                     System.out.println("\nINGRESE LO QUE DESEE HACER\n ");
@@ -59,7 +59,7 @@ class Main{//CREAMOS NUESTRA CLASE
                             System.out.print("\nINGRESE EL ID PRODUCTO: ");
                             id = scan.nextInt(); 
                             System.out.print("INGRESE EL NOMBRE DEL PRODUCTO: ");
-                            producto = scan.next();
+                            producto = scan.nextLine();
                             System.out.print("INGRESE LA MARCA: ");
                             marca = scan.next();
                             System.out.print("INGRESE UN PRECIO: $");
@@ -91,13 +91,12 @@ class Main{//CREAMOS NUESTRA CLASE
                 }
             //VALIDAMOS PARA QUE SEA REPETITIVO
                 }while(b > 0);
-            break;
+                x = true;
             }catch(Exception e){
                 System.out.println("ERROR");
-                System.out.println(b);
                 System.out.println("INGRESE EL NUMERO QUE DESEE HACER: ");
-                b = scan.nextInt();
+                scan.next();
             }
-        }while(b != 0);
+        }while(!x);
     }
 }
