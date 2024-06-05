@@ -1,43 +1,43 @@
-import java.util.Scanner; //IMPORTAMOS NUESTRA LIBRERIA "SCANNER"
+import java.util.Scanner; // Importamos nuestra librería "Scanner"
 
-class Main { //CREAMOS NUESTRA CLASE
-    //CREAMOS NUESTRO METODO PRINCIPAL
+class Main { // Creamos nuestra clase
+    // Creamos nuestro método principal
     public static void main(String[] args) {
-        Lista lista = new Lista();
+        Lista lista = new Lista(); // Creamos una instancia de Lista para manejar productos
 
-        try (Scanner scan = new Scanner(System.in)) { //CREAMOS NUESTRO OBJETO "SCAN" PARA UTILIZAR LA LIBRERIA "SCANNER"
-            //CREAMOS NUESTRAS VARIABLES PARA GUARDAR LOS DATOS INGRESADOS POR EL USUARIO
+        try (Scanner scan = new Scanner(System.in)) { // Creamos nuestro objeto "scan" para utilizar la librería "Scanner"
+            // Creamos nuestras variables para guardar los datos ingresados por el usuario
             String usuario, contraseña;
             int b;
             boolean a, x = false;
 
-            //CREAMOS EL CICLO "DO WHILE" POR SI EL USUARIO O CONTRASEÑA SON INCORRECTOS LOS VUELVA A PEDIR
+            // Creamos el ciclo "do while" por si el usuario o contraseña son incorrectos, los vuelva a pedir
             do {
-                //PEDIMOS Y GUARDAMOS LOS DATOS INGRESADOS POR EL USUARIO
+                // Pedimos y guardamos los datos ingresados por el usuario
                 System.out.print("\nUSUARIO: ");
                 usuario = scan.nextLine();
                 System.out.print("\nCONTRASEÑA: ");
                 contraseña = scan.nextLine();
 
-                //HACEMOS NUESTRO METODO CONTRUCTOR "LOGIN"
+                // Creamos nuestro objeto Login
                 Login log = new Login("OSCAR", "holaquehace"); // Login con datos de ejemplo
 
-                //COMPARAMOS LOS DATOS INGRESADOS POR EL USUARIO CON LOS GUARDADOS EN EL METODO CONTRUCTOR "LOGIN"
+                // Comparamos los datos ingresados por el usuario con los guardados en el objeto Login
                 if (usuario.equals(log.getUsuario()) && contraseña.equals(log.getContraseña())) {
                     System.out.println("¡Acceso concedido!"); // Mensaje de éxito
-                } else { //NOTIFICAMOS QUE EL "USUARIO" O "CONTRSEÑA" SON INCORRETOS
+                } else { // Notificamos que el usuario o contraseña son incorrectos
                     System.out.println("\n¡USUARIO O CONTRASEÑA INCORRECTOS!");
                 }
-                /*VALIDAMOS LOS DATOS INGRESADOS Y SI SON INCORRECTOS LOS VOLVEMOS A PEDIR
-                Y SÍ SI SON CORRECTOS DAMOS ACCESO */
-                a = (usuario.equals(log.getUsuario()) && contraseña.equals(log.getContraseña()));
-            } while (a != true);
 
-            //CREAMOS UN MENÚ PARA DAR MULTIPLES OPCIONES EN NUESTRO PROYECTO
+                // Validamos los datos ingresados y si son incorrectos los volvemos a pedir, y si son correctos damos acceso
+                a = (usuario.equals(log.getUsuario()) && contraseña.equals(log.getContraseña()));
+            } while (!a);
+
+            // Creamos un menú para dar múltiples opciones en nuestro proyecto
             System.out.println("\n-------------MENÚ-------------");
             do {
                 try {
-                    //LO HACEMOS CON OTRO "DO WHILE" PARA QUE SEA REPETITIVO
+                    // Lo hacemos con otro "do while" para que sea repetitivo
                     do {
                         System.out.println("\nINGRESE LO QUE DESEE HACER\n ");
                         System.out.println("1.- CREAR");
@@ -47,25 +47,26 @@ class Main { //CREAMOS NUESTRA CLASE
                         System.out.println("5.- SALIR");
                         b = scan.nextInt();
                         scan.nextLine(); // Limpiar el buffer
-                        //UTILIZAMOS EL METODO "SWITCH" PARA PODER HACER SEGÚN SEA EL CASO
+
+                        // Utilizamos el método "switch" para poder hacer según sea el caso
                         switch (b) {
                             case 1:
                                 System.out.println("-------------CREANDO PRODUCTOS-------------");
                                 MainProductos crear = new MainProductos();
-                                crear.Crear(lista);
+                                crear.Crear(lista); // Llamamos al método Crear de MainProductos y le pasamos la lista
                                 break;
                             case 2:
                                 System.out.println("-----------CONSULTANDO PRODUCTO------------");
                                 Consultar consultar = new Consultar();
-                                consultar.mostrarProductos(lista);
+                                consultar.mostrarProductos(lista); // Llamamos al método mostrarProductos de Consultar y le pasamos la lista
                                 break;
                             case 3:
                                 System.out.println("-----------ACTUALIZANDO PRODUCTO-----------");
-                                Actualizar.actualizarProducto(lista);
+                                Actualizar.actualizarProducto(lista); // Llamamos al método actualizarProducto de Actualizar y le pasamos la lista
                                 break;
                             case 4:
                                 System.out.println("-----------ELIMINANDO PRODUCTO------------");
-                                Eliminar.eliminarProducto(lista);
+                                Eliminar.eliminarProducto(lista); // Llamamos al método eliminarProducto de Eliminar y le pasamos la lista
                                 break;
                             case 5:
                                 System.out.println("Saliendo del sistema...");
@@ -74,14 +75,14 @@ class Main { //CREAMOS NUESTRA CLASE
                                 System.out.println("Opción no válida, intente de nuevo.");
                                 break;
                         }
-                    } while (b != 5);
+                    } while (b != 5); // Salimos del menú cuando la opción sea 5 (SALIR)
                     x = true;
                 } catch (Exception e) {
                     System.out.println("\nERROR");
                     System.out.println("INGRESE EL NUMERO QUE DESEE HACER: ");
                     scan.next();
                 }
-            } while (!x);
+            } while (!x); // Salimos del programa cuando x sea true
         }
     }
 }
