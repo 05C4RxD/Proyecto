@@ -1,36 +1,47 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
-class MainProductos{
-    public static void main(String[] args){
+public class MainProductos {
+    private String a;
+    private int id, precio;
+
+    public void Crear(Lista lista){
+        @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
-
-        String marca, a, producto;
-        int id, precio;
-        List<Productos> lista = new ArrayList<Productos>();
- 
+        boolean x = false;
         
-            do{
-                System.out.print("\nINGRESE EL ID PRODUCTO: ");
-                id = sc.nextInt();
-                System.out.print("INGRESE EL NOMBRE DEL PRODUCTO: ");
-                producto = sc.nextLine();
-                System.out.print("INGRESE LA MARCA: ");
-                marca = sc.next();
-                System.out.print("INGRESE UN PRECIO: $");
-                precio = sc.nextInt();
-                lista.add(new Productos(id, marca, precio, producto));
-                System.out.println("\n¿DESEAS CONTINUAR?\n");
-                a = sc.next();
-                while(!(a.equals("si") || a.equals("no"))){
-                    System.out.println("\n¿DESEAS CONTINUAR?\n");
-                    a = sc.next();
-                }
-            }while(a.equals("si"));
+        do {
+            try {
+                do {
+                    System.out.print("\nINGRESE EL ID PRODUCTO: ");
+                    id = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("INGRESE EL NOMBRE DEL PRODUCTO: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("INGRESE LA MARCA: ");
+                    String marca = sc.nextLine();
+                    System.out.print("INGRESE UN PRECIO: $");
+                    precio = sc.nextInt();
 
-        for(Productos pro : lista){
-            System.out.println("ID DEL PRODUCTO: " + pro.getId() + ", MARCA: " + pro.getMarca() + ", PRECIO: $" + pro.getPrecio());
-        }
+                    Productos producto = new Productos(id, nombre, marca, precio);
+                    lista.agregarProducto(producto);
+
+                    System.out.println("\n¿DESEAS GREGAR OTRO PRODUCTO? (si/no)\n");
+                    a = sc.next();
+                    while (!(a.equals("si") || a.equals("no"))) {
+                        System.out.println("\n¿DESEAS GREGAR OTRO PRODUCTO? (si/no)\n");
+                        a = sc.next();
+                    }
+                } while (a.equals("si"));
+
+                for (Productos pro : lista.getListaProductos()) {
+                    System.out.println("ID DEL PRODUCTO: " + pro.getId() + ", NOMBRE DEL PRODUCTO: " + pro.getNombre() + ", MARCA: " + pro.getMarca() + ", PRECIO: $" + pro.getPrecio());
+                }
+                x = true;
+            } catch (Exception e) {
+                System.out.println("\nERROR, DATOS INVALIDOS");
+                System.out.println("VUELVA A INTENTARLO: ");
+                sc.nextLine(); // Consumir la línea incorrecta
+            }
+        } while (!x);
     }
 }

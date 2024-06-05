@@ -1,23 +1,14 @@
-class Productos{
-    String marca, producto;
-    int id, precio;
+public class Productos {
+    private int id;
+    private String nombre;
+    private String marca;
+    private double precio;
 
-    public Productos(){
-    }
-
-    public Productos(int id, String marca, int precio, String producto){
-        this.marca = marca;
+    public Productos(int id, String nombre, String marca, double precio) {
         this.id = id;
-        this.precio = precio;
-        this.producto = producto;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
+        this.nombre = nombre;
         this.marca = marca;
+        this.precio = precio;
     }
 
     public int getId() {
@@ -28,24 +19,32 @@ class Productos{
         this.id = id;
     }
 
-    public int getPrecio() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public String getProducto() {
-        return producto;
-    }
-
-    public void setProducto(String producto) {
-        this.producto = producto;
     }
 
     @Override
     public String toString() {
-        return "Productos [marca=" + marca + ", id=" + id + ", precio=" + precio + ", producto=" + producto + "]";
+        return "Producto [ID=" + id + ", Nombre=" + nombre + ", Marca=" + marca + ", Precio=" + precio + "]";
     }
 }
